@@ -56,20 +56,20 @@ const getProductsById = async (req, res) => {
 }
 
 const updateProducts = async (req, res) => {
-    if (!res.body) {
+    if (!req.params.id) {
         res.status(404).json({ error:true, message: 'no request' });
     }
 
-    dbConn.query("UPDATE products SET ? WHERE id = ?", [{ ...req.body },req.body.id], function (error, results, fields) {
+    dbConn.query("UPDATE products SET ? WHERE id = ?", [{ ...req.body },req.params.id], function (error, results, fields) {
         if (error) res.status(500).json({ error:true, message: error });
         res.status(200).json({success : true, data: results})
     });
 }
 
 const deleteProducts = async (req, res) =>{
-    dbConn.query("DELETE FROM products where id = ? ", [req.body.id], function (error, results, fields) {
+    dbConn.query("DELETE FROM products where id = ? ", [req.params.id], function (error, results, fields) {
         if (error) res.status(500).json({ error:true, message: error });
-        res.status(200).json({success : true, data: results})
+        res.status(200).json({success : true, data: results, message:'succesfull deleting products'})
     });
 }
 
@@ -102,11 +102,11 @@ const getordersById = async (req, res) => {
 }
 
 const updateOrders = async (req, res) => {
-    if (!res.body) {
+    if (!req.params.id) {
         res.status(404).json({ error:true, message: 'no request' });
     }
 
-    dbConn.query("UPDATE orders SET ? WHERE id = ?", [{ ...req.body },req.body.id], function (error, results, fields) {
+    dbConn.query("UPDATE orders SET ? WHERE id = ?", [{ ...req.body },req.params.id], function (error, results, fields) {
         if (error) res.status(500).json({ error:true, message: error });
         res.status(200).json({success : true, data: results})
     });
@@ -114,9 +114,9 @@ const updateOrders = async (req, res) => {
 
 
 const deleteOrders = async (req, res) =>{
-    dbConn.query("DELETE FROM products where id = ? ", [req.body.id], function (error, results, fields) {
+    dbConn.query("DELETE FROM products where id = ? ", [req.params.id], function (error, results, fields) {
         if (error) res.status(500).json({ error:true, message: error });
-        res.status(200).json({success : true, data: results})
+        res.status(200).json({success : true, data: results, message: 'succesfull deleted orders'})
     });
 }
 
@@ -149,11 +149,11 @@ const getoCustomersById = async (req, res) => {
 }
 
 const updateCustomers = async (req, res) => {
-    if (!res.body) {
+    if (!req.params.id) {
         res.status(404).json({ error:true, message: 'no request' });
     }
 
-    dbConn.query("UPDATE customers SET ? WHERE id = ?", [{ ...req.body },req.body.id], function (error, results, fields) {
+    dbConn.query("UPDATE customers SET ? WHERE id = ?", [{ ...req.body },req.params.id], function (error, results, fields) {
         if (error) res.status(500).json({ error:true, message: error });
         res.status(200).json({success : true, data: results})
     });
@@ -161,9 +161,9 @@ const updateCustomers = async (req, res) => {
 
 
 const deleteCustomers = async (req, res) =>{
-    dbConn.query("DELETE FROM customers where id = ? ", [req.body.id], function (error, results, fields) {
+    dbConn.query("DELETE FROM customers where id = ? ", [req.params.id], function (error, results, fields) {
         if (error) res.status(500).json({ error:true, message: error });
-        res.status(200).json({success : true, data: results})
+        res.status(200).json({success : true, data: results, message: 'succesfully deleted customer'})
     });
 }
 
