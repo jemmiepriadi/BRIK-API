@@ -1,22 +1,4 @@
 #BRIK-API
-Public
-Cannot fork because you own this repository and are not a member of any organizations.
-Code
-Issues
-Pull requests
-Actions
-Projects
-Wiki
-Security
-Insights
-Settings
-BRIK-API/README.md
-@jemmiepriadi
-jemmiepriadi Update README.md
-Latest commit 3bd81b4 now
- History
- 1 contributor
-21 lines (16 sloc)  943 Bytes
 
 BRIK-API
 Created with MySQL database; First create database with name 'brik-test' Then run the app via terminal with command 'npm start' or 'node index.js' go to http://127.0.0.1:3000/ for the url
